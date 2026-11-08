@@ -127,7 +127,7 @@ include __DIR__ . '/../includes/header.php';
     <div class="row">
         <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 260px;">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 250px;">
             <!-- Top Banner / Welcome -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>

@@ -120,7 +120,7 @@ include __DIR__ . '/../../includes/header.php';
     <div class="row">
         <?php include __DIR__ . '/../../includes/sidebar.php'; ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 260px;">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 250px;">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="h3 fw-bold text-dark"><i class="fa-solid fa-plus-circle me-2 text-primary"></i>Create New Claim</h2>
                 <a href="index.php" class="btn btn-outline-secondary btn-sm">

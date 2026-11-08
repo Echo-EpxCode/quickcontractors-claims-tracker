@@ -152,7 +152,7 @@ include __DIR__ . '/../../includes/header.php';
     <div class="row">
         <?php include __DIR__ . '/../../includes/sidebar.php'; ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 260px;">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 250px;">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="h3 fw-bold text-dark"><i class="fa-solid fa-file-invoice-dollar me-2 text-primary"></i>Claims Management</h2>
                 <a href="create.php" class="btn btn-primary">

@@ -67,7 +67,7 @@ include __DIR__ . '/../../includes/header.php';
     <div class="row">
         <?php include __DIR__ . '/../../includes/sidebar.php'; ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 260px;">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" style="margin-left: 250px;">
             <!-- Header bar -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
@@ -180,8 +180,11 @@ include __DIR__ . '/../../includes/header.php';
                 <div class="col-lg-4">
                     <!-- Current Follow-Up Card -->
                     <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-white py-3 fw-bold text-dark border-0">
-                            <i class="fa-solid fa-calendar-check me-2 text-primary"></i> Current Follow-Up
+                        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center border-0">
+                            <span class="fw-bold text-dark"><i class="fa-solid fa-calendar-check me-2 text-primary"></i> Current Follow-Up</span>
+                            <a href="follow-up.php?claim_id=<?php echo $claim['id']; ?>" class="btn btn-sm btn-outline-primary">
+                                <i class="fa-solid fa-pen-to-square me-1"></i> Manage
+                            </a>
                         </div>
                         <div class="card-body">
                             <?php if (!empty($claim['current_fu_date'])): ?>
@@ -189,30 +192,15 @@ include __DIR__ . '/../../includes/header.php';
                                 <p class="mb-2"><strong>Status:</strong> <span class="badge bg-success"><?php echo e($claim['current_fu_status']); ?></span></p>
                                 <p class="mb-3"><strong>Notes:</strong> <?php echo e($claim['current_fu_notes'] ?? 'None'); ?></p>
                             <?php else: ?>
-                                <p class="text-muted small">No active scheduled follow-up.</p>
+                                <p class="text-muted small mb-3">No active scheduled follow-up.</p>
+                                <div class="d-grid">
+                                    <a href="follow-up.php?claim_id=<?php echo $claim['id']; ?>" class="btn btn-sm btn-primary">
+                                        <i class="fa-solid fa-calendar-plus me-1"></i> Schedule Follow-Up
+                                    </a>
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>
-
-                    <!-- Service Call Card (Visible to Supervisor/Director or general if present) -->
-                    <?php if ($role === 'Supervisor' || $role === 'Director' || !empty($claim['sc_job_id'])): ?>
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-white py-3 fw-bold text-dark border-0">
-                            <i class="fa-solid fa-phone me-2 text-primary"></i> Service Call Record
-                        </div>
-                        <div class="card-body">
-                            <?php if (!empty($claim['sc_job_id'])): ?>
-                                <p class="mb-2"><strong>SC Job ID:</strong> <?php echo e($claim['sc_job_id']); ?></p>
-                                <p class="mb-2"><strong>Call Status:</strong> <?php echo e($claim['call_status']); ?></p>
-                                <p class="mb-2"><strong>Scheduled Date:</strong> <?php echo e($claim['sc_scheduled_date'] ?? 'N/A'); ?></p>
-                                <p class="mb-0"><strong>Notes:</strong> <?php echo e($claim['sc_notes'] ?? 'None'); ?></p>
-                            <?php else: ?>
-                                <p class="text-muted small mb-0">No service call record attached (Optional 0-or-1).</p>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-                </div>
             </div>
 
             <!-- History and Audit Logs Tabs -->
