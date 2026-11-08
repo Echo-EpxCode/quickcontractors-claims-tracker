@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
-
+            // if (!$conn instanceof mysqli) {
+            //     die('Database connection is not a valid MySQLi object.');
+            // }
         if (empty($username) || empty($password)) {
             $error_message = 'Please enter both username and password.';
         } else {

@@ -6,7 +6,7 @@
 $role = current_user_role();
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
-<nav id="sidebar" class="bg-dark text-white p-3 vh-100 position-fixed" style="width: 260px; background-color: #343a40 !important;">
+<nav id="sidebar" class="bg-dark text-white p-3 vh-100 position-fixed" style="width: 230px; background-color: #343a40 !important;">
     <div class="sidebar-header pb-3 mb-3 border-bottom border-secondary">
         <h5 class="m-0 text-white"><i class="fa-solid fa-helmet-safety me-2 text-primary"></i>QC Claims Tracker</h5>
         <small class="text-muted">Role: <?php echo e(str_replace('_', ' ', $role ?? 'Guest')); ?></small>
