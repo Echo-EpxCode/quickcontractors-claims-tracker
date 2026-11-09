@@ -32,6 +32,18 @@ $where_clauses = [];
 $params = [];
 $types = "";
 
+// ROLE-BASED SCOPE RESTRICTION: Claim Adjusters see only claims assigned to them
+if ($role === 'Claim_Adjuster') {
+    $where_clauses[] = "c.assigned_handler_id = ?";
+    $params[] = $user_id;
+    $types .= "i";
+} elseif (!empty($filter_handler)) {
+    // Supervisors and Directors can filter by specific handler if selected
+    $where_clauses[] = "c.assigned_handler_id = ?";
+    $params[] = (int)$filter_handler;
+    $types .= "i";
+}
+
 if (!empty($search_job_id)) {
     $where_clauses[] = "c.job_id LIKE ?";
     $params[] = "%" . $search_job_id . "%";
@@ -48,12 +60,6 @@ if (!empty($filter_priority)) {
     $where_clauses[] = "c.priority = ?";
     $params[] = $filter_priority;
     $types .= "s";
-}
-
-if (!empty($filter_handler)) {
-    $where_clauses[] = "c.assigned_handler_id = ?";
-    $params[] = (int)$filter_handler;
-    $types .= "i";
 }
 
 if (!empty($filter_store)) {
@@ -107,7 +113,7 @@ $total_records = $stmt->get_result()->fetch_assoc()['total'];
 $total_pages = ceil($total_records / $limit);
 $stmt->close();
 
-// Fetch paginated claims data with the exact 11 required columns[cite: 1, 3]
+// Fetch paginated claims data with the exact 11 required columns
 $data_sql = "SELECT 
                 c.id, 
                 c.job_id, 
